@@ -34,7 +34,7 @@ const Layout = () => {
             element={
               <>
                 {data.map((el) => (
-                  <MovieCard movieList={el} />
+                  <MovieCard key={el.id} movieList={el} />
                 ))}
               </>
             }
