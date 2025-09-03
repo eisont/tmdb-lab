@@ -2,9 +2,8 @@ import NavBar from '../app/layouts/NavBar';
 import Top20Movies from '../app/layouts/Top20Movies';
 import PopularMovies from '../app/layouts/PopularMovies';
 import styled from 'styled-components';
-import { movieDetailData } from '../shared/mocks';
 import { Route, Routes } from 'react-router-dom';
-import MovieDetail from '../shared/ui/MovieDetail';
+import MovieDetail from './MovieDetail';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -20,8 +19,6 @@ const MainBox = styled.div`
 `;
 
 const Layout = () => {
-  const DetailData = movieDetailData;
-
   return (
     <Wrapper>
       <NavBar />
@@ -37,7 +34,7 @@ const Layout = () => {
             </>
           }
         />
-        <Route path='/details/:id' element={<MovieDetail DetailData={DetailData} />} />
+        <Route path='/details/:id' element={<MovieDetail />} />
       </Routes>
     </Wrapper>
   );

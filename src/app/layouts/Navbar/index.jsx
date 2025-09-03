@@ -5,9 +5,9 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 70px;
 
-  /* position: absolute; */
+  position: absolute;
 
-  background: #aeaeae;
+  background: rgb(174, 174, 174, 0.8);
 
   display: flex;
   justify-content: space-between;
