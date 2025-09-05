@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { movieListData } from '../../../shared/mocks';
-import MovieCard from './../../../shared/ui/MovieCard';
+import { movieListData } from '@/shared/mocks';
+import MovieCard from '@/shared/ui/MovieCard';
 
 const Wrapper = styled.div`
   padding: 20px 0;

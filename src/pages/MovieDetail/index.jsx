@@ -1,7 +1,7 @@
+import MovieInfoCard from '@/shared/ui/MovieInfoCard';
+import SimilarMovies from '@/shared/ui/SimilarMovies';
+import CastList from '@/shared/ui/CastList';
 import styled from 'styled-components';
-import MovieInfoCard from '../../shared/ui/MovieInfoCard';
-import SimilarMovies from '../../shared/ui/SimilarMovies';
-import CastList from '../../shared/ui/CastList';
 
 const Wrapper = styled.div``;
 

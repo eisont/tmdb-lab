@@ -1,6 +1,6 @@
+import MoviePsterCard from '@/shared/ui/MoviePsterCard';
+import { movieListData } from '@/shared/mocks';
 import styled from 'styled-components';
-import MoviePsterCard from '../../../shared/ui/MoviePsterCard';
-import { movieListData } from '../../../shared/mocks';
 
 const Wrapper = styled.div`
   padding: 20px 0;

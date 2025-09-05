@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { movieListData } from '../../mocks';
 import { Link } from 'react-router-dom';
+import { movieListData } from '@/shared/mocks';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,9 +1,9 @@
-import NavBar from '../app/layouts/NavBar';
-import Top20Movies from '../app/layouts/Top20Movies';
-import PopularMovies from '../app/layouts/PopularMovies';
-import styled from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
-import MovieDetail from './MovieDetail';
+import NavBar from '@/app/layouts/Navbar';
+import Top20Movies from '@//shared/ui/Top20Movies';
+import PopularMovies from '@/shared/ui/PopularMovies';
+import MovieDetail from '@/pages/MovieDetail';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 100vw;

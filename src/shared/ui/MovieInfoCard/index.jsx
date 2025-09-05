@@ -1,6 +1,6 @@
+import { movieDetailData } from '@/shared/mocks';
+import { FavoritesSVG } from '@/shared/assets/SVGicons/32pxIcon';
 import styled from 'styled-components';
-import { movieDetailData } from '../../mocks';
-import { FavoritesSVG } from '../../SVGicons/32pxIcon';
 
 const Wrapper = styled.div`
   width: 100%;
