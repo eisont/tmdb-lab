@@ -4,27 +4,23 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   background-image: url(${(pr) => pr.$bg});
   background-repeat: no-repeat;
   background-size: cover;
-
-  &::before {
-    content: '';
-    height: 100vh;
-  }
 `;
 const MainBox = styled.div`
-  width: 60%;
-  height: 500px;
+  width: 1120px;
+  height: 700px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 const Poster = styled.img`
-  height: 500px;
+  height: 700px;
   border-radius: 5px;
 `;
 
@@ -44,12 +40,13 @@ const TitleBox = styled.div`
   align-items: flex-end;
 `;
 const Title = styled.div`
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 600;
 `;
 const Text = styled.div`
   padding: 8px 0;
   font-weight: 400;
+  font-size: 18px;
 `;
 const Like = styled.div`
   margin: 0 0 0 20px;

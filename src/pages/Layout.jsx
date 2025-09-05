@@ -4,6 +4,7 @@ import Top20Movies from '@//shared/ui/Top20Movies';
 import PopularMovies from '@/shared/ui/PopularMovies';
 import MovieDetail from '@/pages/MovieDetail';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -13,12 +14,20 @@ const Wrapper = styled.div`
 `;
 
 const MainBox = styled.div`
+  padding: 100px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  * {
+    background: ${(pr) => (pr.$isDarkMode ? '#000' : '#fff')};
+    color: ${(pr) => (pr.$isDarkMode ? '#fff' : '#000')};
+  }
 `;
 
 const Layout = () => {
+  const isDarkMode = useSelector((state) => state.setDarkMode);
+
   return (
     <Wrapper>
       <NavBar />
@@ -26,12 +35,10 @@ const Layout = () => {
         <Route
           path='/'
           element={
-            <>
-              <MainBox>
-                <Top20Movies />
-                <PopularMovies />
-              </MainBox>
-            </>
+            <MainBox $isDarkMode={isDarkMode}>
+              <Top20Movies />
+              <PopularMovies />
+            </MainBox>
           }
         />
         <Route path='/details/:id' element={<MovieDetail />} />

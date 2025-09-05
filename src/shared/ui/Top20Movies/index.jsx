@@ -1,36 +1,43 @@
-import MoviePsterCard from '@/shared/ui/MoviePsterCard';
+import MoviePosterCard from '@/shared/ui/Top20Movies/MoviePosterCard';
 import { movieListData } from '@/shared/mocks';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding: 20px 0;
-  overflow: scroll;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const MainBox = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-x: scroll;
 `;
 const Title = styled.div`
-  font-size: 50px;
+  padding: 20px 0;
+  font-size: 40px;
   font-weight: 600;
 `;
-
-const MainBox = styled.div`
+const MoviesList = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
 const Top20Movies = () => {
-  const TopListData = movieListData.results.filter((el) => el.poster_path);
+  const Data = movieListData.results.filter((el) => el.poster_path);
 
   return (
     <Wrapper>
-      <Title>평점순 TOP 20</Title>
-
       <MainBox>
-        {TopListData.map((el, i) => (
-          <MoviePsterCard key={el.id} movieList={el} index={i + 1} />
-        ))}
+        <Title>평점순 TOP 20</Title>
+
+        <MoviesList>
+          {Data.map((el, i) => (
+            <MoviePosterCard key={el.id} data={el} index={i + 1} />
+          ))}
+        </MoviesList>
       </MainBox>
     </Wrapper>
   );

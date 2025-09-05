@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -17,6 +18,7 @@ const Head = styled.div`
   padding: 15px 0;
   font-size: 25px;
   font-weight: 600;
+  color: ${(pr) => (pr.$isDarkMode ? '#fff' : '#000')};
 `;
 const Box = styled.div`
   width: 1200px;
@@ -51,11 +53,12 @@ const Name = styled.div`
 
 const CastList = () => {
   const DummyData = Array(15).fill('');
+  const isDarkMode = useSelector((state) => state.setDarkMode);
 
   return (
     <Wrapper>
       <MainBox>
-        <Head>출연: </Head>
+        <Head $isDarkMode={isDarkMode}>출연: </Head>
 
         <Box>
           {DummyData.map((el, i) => (

@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import { movieListData } from '@/shared/mocks';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  * {
+    color: ${(pr) => (pr.$isDarkMode ? '#fff' : '#000')};
+  }
 `;
 const MainBox = styled.div`
   margin: 40px 0 0 0;
@@ -48,9 +52,10 @@ const Title = styled.div`
 
 const SimilarMovies = () => {
   const ListData = movieListData.results.filter((_, i) => i < 6);
+  const isDarkMode = useSelector((state) => state.setDarkMode);
 
   return (
-    <Wrapper>
+    <Wrapper $isDarkMode={isDarkMode}>
       <MainBox>
         <Head>비슷한 영화</Head>
 

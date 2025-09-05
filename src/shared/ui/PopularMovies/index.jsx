@@ -1,39 +1,44 @@
 import styled from 'styled-components';
 import { movieListData } from '@/shared/mocks';
-import MovieCard from '@/shared/ui/MovieCard';
+import MovieCard from '@/shared/ui/PopularMovies/MovieCard';
 
 const Wrapper = styled.div`
-  padding: 20px 0;
-  overflow: scroll;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const MainBox = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 const Title = styled.div`
-  font-size: 50px;
+  padding: 20px 0;
+  font-size: 40px;
   font-weight: 600;
 `;
-
-const MainBox = styled.div`
-  width: 100vw;
-  gap: 30px;
-
+const MoviesList = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 `;
 
 const PopularMovies = () => {
-  const ListData = movieListData.results;
+  const Data = movieListData.results;
 
   return (
     <Wrapper>
-      <Title>인기순</Title>
-
       <MainBox>
-        {ListData.map((el) => (
-          <MovieCard key={el.id} movieList={el} />
-        ))}
+        <Title>인기순</Title>
+
+        <MoviesList>
+          {Data.map((el) => (
+            <MovieCard key={el.id} data={el} />
+          ))}
+        </MoviesList>
       </MainBox>
     </Wrapper>
   );
