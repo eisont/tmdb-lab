@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { movieDetailData, movieListData } from '../../shared/mocks';
 import { Route, Routes } from 'react-router-dom';
-import NavBar from './NavBar';
 import MovieCard from '../../shared/ui/MovieCard';
 import MovieDetail from '../../shared/ui/MovieDetail';
+import NavBar from './Navbar';
 
 const Wrapper = styled.div`
   width: 100vw;
