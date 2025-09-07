@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import MovieCard from '@/shared/ui/PopularMovies/MovieCard';
+import MovieCard from '@/shared/ui/Card/MovieCard';
 import { PopularMovieFetch } from '../../../api/tmbc';
 
 const Wrapper = styled.div`

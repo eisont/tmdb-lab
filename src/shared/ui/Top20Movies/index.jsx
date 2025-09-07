@@ -1,4 +1,4 @@
-import MoviePosterCard from '@/shared/ui/Top20Movies/MoviePosterCard';
+import MoviePosterCard from '@/shared/ui/Card/MoviePosterCard';
 import styled from 'styled-components';
 import { TopMovieFetch } from '../../../api/tmbc';
 
