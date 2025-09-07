@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import NavBar from '@/app/layouts/Navbar';
+import NavBar from '@/shared/layouts/Navbar';
 import Top20Movies from '@//shared/ui/Top20Movies';
 import PopularMovies from '@/shared/ui/PopularMovies';
 import MovieDetail from '@/pages/MovieDetail';

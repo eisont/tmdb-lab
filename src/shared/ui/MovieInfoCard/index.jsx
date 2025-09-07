@@ -1,7 +1,7 @@
 import { FavoritesSVG } from '@/shared/assets/SVGicons/32pxIcon';
 import styled from 'styled-components';
-import { DetailMovieFetch } from '../../../api/tmbc';
 import { useParams } from 'react-router-dom';
+import { DetailMovieFetch } from '../../../api/tmbc';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -32,6 +32,8 @@ const LBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   font-size: 18px;
+
+  background: rgb(0, 0, 0, 0.5);
 
   color: #fff;
 `;
