@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { PopularMovieFetch } from '../../../api/tmbc';
+import { PlaySVG } from '../../assets/SVGicons/40pxIcon';
+import MovieCard from '../Card/MovieCard';
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,24 +35,6 @@ const Box = styled.div`
 
   overflow: scroll;
 `;
-const Flex = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  color: #000;
-  text-decoration: none;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
-const Poster = styled.img`
-  width: 350px;
-  height: 540px;
-`;
-const Title = styled.div`
-  padding: 10px 0;
-  font-size: 18px;
-`;
 
 const SimilarMovies = () => {
   const isDarkMode = useSelector((state) => state.setDarkMode);
@@ -65,11 +49,7 @@ const SimilarMovies = () => {
 
         <Box>
           {ListData?.map((el) => (
-            <Flex key={el.id} to={`/details/${el.id}`}>
-              <Poster src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} />
-
-              <Title>{el.title}</Title>
-            </Flex>
+            <MovieCard key={el.id} data={el} />
           ))}
         </Box>
       </MainBox>

@@ -75,23 +75,26 @@ export const DetailMovieFetch = ({ query, enabled = true }) => {
 
   return data;
 };
+export const CastingFetch = ({ query, enabled = true }) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (!enabled) return;
 
-// export const DetailMovieFetch = ({ query, enabled = true }) => {
-//   const [data, setData] = useState([]);
-//   useEffect(() => {
-//     if (!enabled) return;
+    try {
+      const fetchData = async () => {
+        const res = await fetch(query, options);
+        const json = await res.json();
+        setData(json);
+      };
+      fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  }, [query, enabled]);
 
-//     try {
-//       const fetchData = async () => {
-//         const res = await fetch(query, options);
-//         const json = await res.json();
-//         setData(json);
-//       };
-//       fetchData();
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   }, [query, enabled]);
+  const filter = data.cast?.filter((el) => !el.adult);
 
-//   return data;
-// };
+  const result = filter?.map((el) => ({ name: el.original_name, id: el.cast_id, profile: el.profile_path }));
+
+  return result;
+};
