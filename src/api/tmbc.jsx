@@ -98,3 +98,26 @@ export const CastingFetch = ({ query, enabled = true }) => {
 
   return result;
 };
+export const SearchFetch = ({ query, enabled = true }) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (!enabled) return;
+
+    try {
+      const fetchData = async () => {
+        const res = await fetch(query, options);
+        const json = await res.json();
+        setData(json);
+      };
+      fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  }, [query, enabled]);
+
+  const filter = data.results?.filter((el) => !el.adult);
+
+  const result = filter?.map((el) => ({ id: el.id, poster_path: el.poster_path, title: el.title, vote_average: el.vote_average }));
+
+  return result;
+};

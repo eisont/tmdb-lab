@@ -20,7 +20,7 @@ const Head = styled.div`
   padding: 15px 0;
   font-size: 25px;
   font-weight: 600;
-  color: ${(pr) => (pr.$isDarkMode ? '#fff' : '#000')};
+  color: '#000';
 `;
 const Box = styled.div`
   width: 1200px;
@@ -57,13 +57,12 @@ const Name = styled.div`
 
 const CastList = () => {
   const params = useParams();
-  const isDarkMode = useSelector((state) => state.setDarkMode);
   const data = CastingFetch({ query: `https://api.themoviedb.org/3/movie/${params.id}/credits?language=ko-KR`, enabled: true });
 
   return (
     <Wrapper>
       <MainBox>
-        <Head $isDarkMode={isDarkMode}>출연: </Head>
+        <Head>출연: </Head>
 
         <Box>
           {data?.map((el) => (

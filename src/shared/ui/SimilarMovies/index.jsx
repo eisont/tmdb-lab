@@ -9,9 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  * {
-    color: ${(pr) => (pr.$isDarkMode ? '#fff' : '#000')};
-  }
+  color: '#000';
 `;
 const MainBox = styled.div`
   margin: 40px 0 0 0;
@@ -37,13 +35,12 @@ const Box = styled.div`
 `;
 
 const SimilarMovies = () => {
-  const isDarkMode = useSelector((state) => state.setDarkMode);
   const params = useParams();
 
   const ListData = PopularMovieFetch({ query: `https://api.themoviedb.org/3/movie/${params.id}/similar?language=ko-KO&page=1`, enabled: true });
 
   return (
-    <Wrapper $isDarkMode={isDarkMode}>
+    <Wrapper>
       <MainBox>
         <Head>비슷한 영화</Head>
 
