@@ -1,17 +1,17 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-export const isDarkmodeSlice = createSlice({
-  name: 'isDarkMode',
-  initialState: 'false',
+export const isSearchSlice = createSlice({
+  name: 'isSearch',
+  initialState: false,
   reducers: {
-    setDarkMode(state, action) {
-      return (state = action.payload);
+    toggleSearchMode(_, action) {
+      return action.payload;
     },
   },
 });
 
 export const store = configureStore({
   reducer: {
-    setDarkMode: isDarkmodeSlice.reducer,
+    toggleSearchMode: isSearchSlice.reducer,
   },
 });
