@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { CastingFetch } from '../../../api/tmbc';
+import { useParams } from 'react-router-dom';
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,6 +46,8 @@ const Img = styled.div`
   height: 50px;
   border-radius: 50%;
   background: #aeaeae;
+  background-image: url(${(pr) => pr.$bg});
+  background-size: cover;
 `;
 const Name = styled.div`
   width: 180px;
@@ -52,8 +56,9 @@ const Name = styled.div`
 `;
 
 const CastList = () => {
-  const DummyData = Array(15).fill('');
+  const params = useParams();
   const isDarkMode = useSelector((state) => state.setDarkMode);
+  const data = CastingFetch({ query: `https://api.themoviedb.org/3/movie/${params.id}/credits?language=ko-KR`, enabled: true });
 
   return (
     <Wrapper>
@@ -61,10 +66,10 @@ const CastList = () => {
         <Head $isDarkMode={isDarkMode}>출연: </Head>
 
         <Box>
-          {DummyData.map((el, i) => (
-            <Flex key={i}>
-              <Img />
-              <Name>name</Name>
+          {data?.map((el) => (
+            <Flex key={el.id}>
+              <Img $bg={`https://image.tmdb.org/t/p/w500/${el.profile}`} />
+              <Name>{el.name}</Name>
             </Flex>
           ))}
         </Box>
