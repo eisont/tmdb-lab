@@ -1,48 +1,60 @@
-import { MoonSVG, SearchSVG } from '../../../shared/assets/SVGicons/32pxIcon';
-import { PlaySVG } from '../../../shared/assets/SVGicons/40pxIcon';
-import { useState } from 'react';
-import { useMovieList } from '../../../api/movieHooks';
-import MovieCard from '@/shared/ui/Card/MovieCard';
+import { MoonSVG, SearchSVG } from '@/shared/assets/SVGicons/32pxIcon';
+import { PlaySVG } from '@/shared/assets/SVGicons/40pxIcon';
+import { useMovieList } from '@/api/movieHooks';
 import * as S from './Navbar.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchModeSlice } from '@/app/store';
-import { CloseSVG } from '../../assets/SVGicons/24pxIcon';
+import { searchModeSlice, searchQuerySlice } from '@/app/store';
+import { CloseSVG } from '@/shared/assets/SVGicons/24pxIcon';
+import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
 
 const NavBar = () => {
-  const [text, setText] = useState('');
-
-  const data = useMovieList({ query: `https://api.themoviedb.org/3/search/movie?language=ko-KO&include_adult=false&query=${text}` });
   const dispatch = useDispatch();
-  const toggle = useSelector((state) => state.toggleSearchMode);
+  const text = useSelector((state) => state.searchQuery);
+  const data = useMovieList({ query: `https://api.themoviedb.org/3/search/movie?language=ko-KO&include_adult=false&query=${text}` });
+  const toggle = useSelector((state) => state.searchMode);
+
+  const ToggleAndClear = () => {
+    dispatch(searchModeSlice.actions.close());
+    dispatch(searchQuerySlice.actions.clearQuery());
+  };
 
   return (
     <S.Wrapper>
-      <S.FirstBox>
-        <S.Logo to={'./'}>{PlaySVG({ fill: '#000' })}</S.Logo>
+      <S.MainBox>
+        <S.FirstBox>
+          <S.Logo to={'./'} onClick={() => dispatch(searchModeSlice.actions.close())}>
+            {PlaySVG({ fill: '#000' })}
+          </S.Logo>
 
-        <S.BtBox>
-          <S.Bt>로그인</S.Bt>
-          <S.Bt>회원가입</S.Bt>
-          <S.IconBox>{MoonSVG({ stroke: '#000' })}</S.IconBox>
-          {toggle ? (
-            <S.IconBox onClick={() => dispatch(searchModeSlice.actions.toggleSearchMode(false))}>{CloseSVG({ stroke: '#000' })}</S.IconBox>
-          ) : (
-            <S.IconBox onClick={() => dispatch(searchModeSlice.actions.toggleSearchMode(true))}>{SearchSVG({ stroke: '#000' })}</S.IconBox>
-          )}
-        </S.BtBox>
-      </S.FirstBox>
+          <S.BtBox>
+            <S.Bt>로그인</S.Bt>
+            <S.Bt>회원가입</S.Bt>
+            <S.Icon>{MoonSVG({ stroke: '#000' })}</S.Icon>
+            {toggle ? (
+              <S.Icon onClick={() => ToggleAndClear()}>{CloseSVG({ stroke: '#000' })}</S.Icon>
+            ) : (
+              <S.Icon onClick={() => dispatch(searchModeSlice.actions.open())}>{SearchSVG({ stroke: '#000' })}</S.Icon>
+            )}
+          </S.BtBox>
+        </S.FirstBox>
+      </S.MainBox>
 
       {toggle && (
         <>
-          <S.InputBox>
-            <S.IconBox>{SearchSVG({ stroke: '#999' })}</S.IconBox>
-            <S.Input placeholder='제목를 입력하세요.' onChange={(e) => setText(e.target.value)} />
-          </S.InputBox>
-          <S.SearchBox>
-            {data?.map((el) => (
-              <MovieCard key={el.id} data={el} />
-            ))}
-          </S.SearchBox>
+          <S.MainBox>
+            <S.InputBox>
+              <S.Icon style={{ marginRight: '10px' }}>{SearchSVG({ stroke: '#999' })}</S.Icon>
+              <S.Input placeholder='제목를 입력하세요.' onChange={(e) => dispatch(searchQuerySlice.actions.setQuery(e.target.value))} />
+            </S.InputBox>
+          </S.MainBox>
+
+          {text && (
+            <S.SearchBox>
+              {data?.map((el) => (
+                <SearchMovieCard key={el.id} data={el} />
+              ))}
+            </S.SearchBox>
+          )}
         </>
       )}
     </S.Wrapper>
