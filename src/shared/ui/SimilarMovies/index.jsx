@@ -1,8 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { PopularMovieFetch } from '../../../api/tmbc';
-import { PlaySVG } from '../../assets/SVGicons/40pxIcon';
+import { useMovieList } from '../../../api/movieHooks';
 import MovieCard from '../Card/MovieCard';
 
 const Wrapper = styled.div`
@@ -37,7 +35,7 @@ const Box = styled.div`
 const SimilarMovies = () => {
   const params = useParams();
 
-  const ListData = PopularMovieFetch({ query: `https://api.themoviedb.org/3/movie/${params.id}/similar?language=ko-KO&page=1`, enabled: true });
+  const ListData = useMovieList({ query: `https://api.themoviedb.org/3/movie/${params.id}/similar?language=ko-KO&page=1` });
 
   return (
     <Wrapper>

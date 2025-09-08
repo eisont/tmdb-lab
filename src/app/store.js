@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-export const isSearchSlice = createSlice({
+export const searchModeSlice = createSlice({
   name: 'isSearch',
   initialState: false,
   reducers: {
@@ -12,6 +12,6 @@ export const isSearchSlice = createSlice({
 
 export const store = configureStore({
   reducer: {
-    toggleSearchMode: isSearchSlice.reducer,
+    toggleSearchMode: searchModeSlice.reducer,
   },
 });

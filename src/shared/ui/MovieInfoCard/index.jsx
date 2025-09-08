@@ -1,7 +1,7 @@
 import { FavoritesSVG } from '@/shared/assets/SVGicons/32pxIcon';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import { DetailMovieFetch } from '../../../api/tmbc';
+import { useMovieDetail } from '../../../api/movieHooks';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -58,7 +58,7 @@ const Like = styled.div`
 
 const MovieInfoCard = () => {
   const params = useParams();
-  const DetailData = DetailMovieFetch({ query: `https://api.themoviedb.org/3/movie/${params.id}?language=ko-KO`, enabled: true });
+  const DetailData = useMovieDetail({ query: `https://api.themoviedb.org/3/movie/${params.id}?language=ko-KO` });
 
   return (
     <Wrapper $bg={`https://image.tmdb.org/t/p/w500${DetailData.backdrop_path}`}>
@@ -80,9 +80,6 @@ const MovieInfoCard = () => {
           </Text>
           <Text>상영시간: {DetailData.runtime}</Text>
           <Text>줄거리: {DetailData.overview}</Text>
-
-          <Text>시청 가능한 플랫폼: </Text>
-          <Text>출연:</Text>
         </LBox>
         <Poster src={`https://image.tmdb.org/t/p/w500${DetailData.poster_path}`} />
       </MainBox>

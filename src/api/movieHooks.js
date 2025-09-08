@@ -8,31 +8,7 @@ const options = {
   },
 };
 
-export const TopMovieFetch = ({ query, enabled = true }) => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    if (!enabled) return;
-
-    try {
-      const fetchData = async () => {
-        const res = await fetch(query, options);
-        const json = await res.json();
-        setData(json);
-      };
-      fetchData();
-    } catch (err) {
-      console.error(err);
-    }
-  }, [query, enabled]);
-
-  const filter = data.results?.filter((el) => !el.adult);
-
-  const result = filter?.map((el) => ({ poster_path: el.poster_path, id: el.id }));
-
-  return result;
-};
-
-export const PopularMovieFetch = ({ query, enabled = true }) => {
+export const useMovieList = ({ query, enabled = true }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     if (!enabled) return;
@@ -56,7 +32,31 @@ export const PopularMovieFetch = ({ query, enabled = true }) => {
   return result;
 };
 
-export const DetailMovieFetch = ({ query, enabled = true }) => {
+export const useTop20Movies = ({ query, enabled = true }) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (!enabled) return;
+
+    try {
+      const fetchData = async () => {
+        const res = await fetch(query, options);
+        const json = await res.json();
+        setData(json);
+      };
+      fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  }, [query, enabled]);
+
+  const filter = data.results?.filter((el) => !el.adult);
+
+  const result = filter?.map((el) => ({ poster_path: el.poster_path, id: el.id }));
+
+  return result;
+};
+
+export const useMovieDetail = ({ query, enabled = true }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     if (!enabled) return;
@@ -75,7 +75,8 @@ export const DetailMovieFetch = ({ query, enabled = true }) => {
 
   return data;
 };
-export const CastingFetch = ({ query, enabled = true }) => {
+
+export const useMovieCast = ({ query, enabled = true }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     if (!enabled) return;
@@ -95,29 +96,6 @@ export const CastingFetch = ({ query, enabled = true }) => {
   const filter = data.cast?.filter((el) => !el.adult);
 
   const result = filter?.map((el) => ({ name: el.original_name, id: el.cast_id, profile: el.profile_path }));
-
-  return result;
-};
-export const SearchFetch = ({ query, enabled = true }) => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    if (!enabled) return;
-
-    try {
-      const fetchData = async () => {
-        const res = await fetch(query, options);
-        const json = await res.json();
-        setData(json);
-      };
-      fetchData();
-    } catch (err) {
-      console.error(err);
-    }
-  }, [query, enabled]);
-
-  const filter = data.results?.filter((el) => !el.adult);
-
-  const result = filter?.map((el) => ({ id: el.id, poster_path: el.poster_path, title: el.title, vote_average: el.vote_average }));
 
   return result;
 };
