@@ -1,6 +1,6 @@
 import MoviePosterCard from '@/shared/ui/Card/MoviePosterCard';
 import styled from 'styled-components';
-import { useTop20Movies } from '../../../api/movieHooks';
+import { useTop20Movies } from '@/api/movieHooks';
 
 const Wrapper = styled.div`
   width: 100%;

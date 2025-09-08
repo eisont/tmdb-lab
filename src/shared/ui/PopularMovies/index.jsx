@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import MovieCard from '@/shared/ui/Card/MovieCard';
-import { useMovieList } from '../../../api/movieHooks';
+import { useMovieList } from '@/api/movieHooks';
 
 const Wrapper = styled.div`
   width: 100%;

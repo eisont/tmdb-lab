@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useMovieCast } from '../../../api/movieHooks';
+import { useMovieCast } from '@/api/movieHooks';
 import { useParams } from 'react-router-dom';
 
 const Wrapper = styled.div`
