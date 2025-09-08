@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PlaySVG } from '../../../assets/SVGicons/40pxIcon';
+import { PlaySVG } from '@/shared/assets/SVGicons/40pxIcon';
 import { useDispatch } from 'react-redux';
 import { searchModeSlice } from '@/app/store';
 
@@ -53,6 +53,7 @@ const FlexBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const MovieCard = (pr) => {
   const dispatch = useDispatch();
   return (

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useMovieList } from '../../../api/movieHooks';
-import MovieCard from '../Card/MovieCard';
+import { useMovieList } from '@/api/movieHooks';
+import MovieCard from '@/shared/ui/Card/MovieCard';
 
 const Wrapper = styled.div`
   display: flex;

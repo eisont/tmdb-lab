@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { searchModeSlice } from '@/app/store';
+import { searchModeSlice, searchQuerySlice } from '@/app/store';
 const Wrapper = styled.div`
   display: flex;
   margin: 0 30px 0 0;
@@ -28,10 +28,16 @@ const Poster = styled.img`
 
 const MoviePosterCard = (pr) => {
   const dispatch = useDispatch();
+
+  const ToggleAndClear = () => {
+    dispatch(searchModeSlice.actions.close());
+    dispatch(searchQuerySlice.actions.clearQuery());
+  };
+
   return (
     <Wrapper>
       <Num>{pr.index}</Num>
-      <Link to={`/details/${pr.data.id}`} onClick={() => dispatch(searchModeSlice.actions.toggleSearchMode(false))}>
+      <Link to={`/details/${pr.data.id}`} onClick={() => ToggleAndClear()}>
         <Poster src={`https://image.tmdb.org/t/p/w500${pr.data.poster_path}`} />
       </Link>
     </Wrapper>

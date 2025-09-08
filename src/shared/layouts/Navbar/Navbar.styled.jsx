@@ -9,11 +9,19 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: rgb(255, 255, 255, 0.8);
+  background: rgb(255, 255, 255, 0.9);
+`;
+export const MainBox = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #fff;
   border-bottom: 1px solid gray;
 `;
 export const FirstBox = styled.div`
-  width: 90vw;
+  width: 1200px;
   height: 70px;
 
   display: flex;
@@ -34,24 +42,6 @@ export const Logo = styled(Link)`
     cursor: pointer;
   }
 `;
-export const InputBox = styled.div`
-  width: 100vw;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: #fff;
-  border: 1px solid gray;
-`;
-export const Input = styled.input`
-  width: 90vw;
-
-  font-size: 20px;
-  border: none;
-  outline: none;
-  background: none;
-`;
 export const BtBox = styled.div`
   display: flex;
   align-items: center;
@@ -71,16 +61,45 @@ export const Bt = styled.div`
     color: #fff;
   }
 `;
-export const IconBox = styled.div`
+export const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
+
+export const InputBox = styled.div`
+  width: 1200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #fff;
+`;
+export const Input = styled.input`
+  width: 1000px;
+  height: 40px;
+
+  font-size: 20px;
+  border: none;
+  outline: none;
+`;
+
 export const SearchBox = styled.div`
-  width: 90vw;
+  padding: 20px 0;
+  width: 1200px;
 
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  background: #fff;
+  justify-content: space-between;
+  gap: 50px;
+
+  &::after {
+    content: '';
+    flex: auto;
+  }
 `;

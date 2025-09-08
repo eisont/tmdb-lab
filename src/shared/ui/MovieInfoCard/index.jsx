@@ -1,7 +1,7 @@
 import { FavoritesSVG } from '@/shared/assets/SVGicons/32pxIcon';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import { useMovieDetail } from '../../../api/movieHooks';
+import { useMovieDetail } from '@/api/movieHooks';
 
 const Wrapper = styled.div`
   width: 100%;
