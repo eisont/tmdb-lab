@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PlaySVG } from '../../../assets/SVGicons/40pxIcon';
 import { useDispatch } from 'react-redux';
-import { isSearchSlice } from '../../../../redux';
+import { searchModeSlice } from '@/app/store';
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ const MovieCard = (pr) => {
   const dispatch = useDispatch();
   return (
     <Wrapper>
-      <Link to={`/details/${pr.data.id}`} onClick={() => dispatch(isSearchSlice.actions.toggleSearchMode(false))}>
+      <Link to={`/details/${pr.data.id}`} onClick={() => dispatch(searchModeSlice.actions.toggleSearchMode(false))}>
         {pr.data.poster_path ? <Poster src={`https://image.tmdb.org/t/p/w500${pr.data.poster_path}`} alt={pr.data.title} /> : <FlexBox>{PlaySVG({ fill: '#aeaeae' })}</FlexBox>}
       </Link>
       <TextBox>

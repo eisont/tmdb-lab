@@ -1,6 +1,5 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { CastingFetch } from '../../../api/tmbc';
+import { useMovieCast } from '../../../api/movieHooks';
 import { useParams } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -57,7 +56,7 @@ const Name = styled.div`
 
 const CastList = () => {
   const params = useParams();
-  const data = CastingFetch({ query: `https://api.themoviedb.org/3/movie/${params.id}/credits?language=ko-KR`, enabled: true });
+  const data = useMovieCast({ query: `https://api.themoviedb.org/3/movie/${params.id}/credits?language=ko-KR` });
 
   return (
     <Wrapper>

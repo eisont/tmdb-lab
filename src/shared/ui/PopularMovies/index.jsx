@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import MovieCard from '@/shared/ui/Card/MovieCard';
-import { PopularMovieFetch } from '../../../api/tmbc';
+import { useMovieList } from '../../../api/movieHooks';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,7 +27,7 @@ const MoviesList = styled.div`
 `;
 
 const PopularMovies = () => {
-  const popularMovie = PopularMovieFetch({ query: 'https://api.themoviedb.org/3/discover/movie?language=ko-KO&include_adult=false&sort_by=popularity.desc&page=1&with_genres=', enabled: true });
+  const popularMovie = useMovieList({ query: 'https://api.themoviedb.org/3/discover/movie?language=ko-KO&include_adult=false&sort_by=popularity.desc&page=1&with_genres=' });
 
   return (
     <Wrapper>

@@ -1,12 +1,13 @@
 import MoviePosterCard from '@/shared/ui/Card/MoviePosterCard';
 import styled from 'styled-components';
-import { TopMovieFetch } from '../../../api/tmbc';
+import { useTop20Movies } from '../../../api/movieHooks';
 
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgb(0, 0, 0, 0.1);
 `;
 const MainBox = styled.div`
   width: 90%;
@@ -26,7 +27,7 @@ const MoviesList = styled.div`
 `;
 
 const Top20Movies = () => {
-  const topMovie = TopMovieFetch({ query: 'https://api.themoviedb.org/3/discover/movie?language=ko-KO&include_adult=false&sort_by=vote_count.desc&with_genres=', enabled: true });
+  const topMovie = useTop20Movies({ query: 'https://api.themoviedb.org/3/discover/movie?language=ko-KO&include_adult=false&sort_by=vote_count.desc&with_genres=' });
 
   return (
     <Wrapper>
