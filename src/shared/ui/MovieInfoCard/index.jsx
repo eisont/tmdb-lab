@@ -1,7 +1,7 @@
-import { FavoritesSVG } from '@/shared/assets/SVGicons/32pxIcon';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useMovieDetail } from '@/api/movieHooks';
+import { FavoritesSVG } from '@/shared/assets/SVGicons';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -66,8 +66,8 @@ const MovieInfoCard = () => {
         <LBox>
           <TitleBox>
             <Title>{DetailData.title}</Title>
-            <Like>{FavoritesSVG({ fill: 'red', stroke: 'red' })}</Like>
-            <Like>{FavoritesSVG({ fill: 'none', stroke: '#fff' })}</Like>
+            <Like>{FavoritesSVG({ size: '32', fill: 'red', stroke: 'red' })}</Like>
+            <Like>{FavoritesSVG({ size: '32', fill: 'none', stroke: '#fff' })}</Like>
           </TitleBox>
           <Text>별점: {DetailData.vote_average}</Text>
           <Text style={{ display: 'flex' }}>

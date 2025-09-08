@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PlaySVG } from '@/shared/assets/SVGicons/40pxIcon';
+import { PlaySVG } from '@/shared/assets/SVGicons';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { searchModeSlice, searchQuerySlice } from '@/app/store';
