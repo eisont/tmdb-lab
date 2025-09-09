@@ -41,7 +41,6 @@ const SimilarMovies = () => {
   const params = useParams();
 
   const ListData = useMovieList({ query: `https://api.themoviedb.org/3/movie/${params.id}/similar?language=ko-KO&page=1` });
-  console.log('ListData', ListData);
 
   return (
     <Wrapper>

@@ -51,8 +51,6 @@ const PopularMovies = () => {
   return (
     <Wrapper>
       <MainBox>
-        <Title>인기순</Title>
-
         <MoviesList>
           {popularMovie?.map((el) => (
             <MovieCard key={el.id} data={el} />

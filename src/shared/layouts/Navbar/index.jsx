@@ -1,9 +1,9 @@
 import * as S from './Navbar.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchModeSlice, searchQuerySlice } from '@/app/store';
 import { useNavigate } from 'react-router-dom';
 import { MenuSVG, MoonSVG, SearchSVG, PlaySVG, CloseSVG } from '@/shared/assets/SVGicons';
 import { useState } from 'react';
+import { searchModeSlice, searchQuerySlice } from '@/shared/store';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

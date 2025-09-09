@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { searchModeSlice, searchQuerySlice } from '@/app/store';
+import { searchModeSlice, searchQuerySlice } from '@/shared/store';
 import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 const Wrapper = styled.div`
   display: flex;
