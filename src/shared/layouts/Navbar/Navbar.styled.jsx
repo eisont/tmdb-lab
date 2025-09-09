@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   width: 100%;
 
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -93,36 +92,4 @@ export const Input = styled.input`
   font-size: 20px;
   border: none;
   outline: none;
-`;
-
-export const SearchBox = styled.div`
-  padding: 20px 0;
-  width: 80%;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 50px;
-
-  &::after {
-    content: '';
-    flex: auto;
-  }
-
-  @media (max-width: ${BREAKPOINTS.laptop}) {
-    display: flex;
-  }
-`;
-export const Box = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  transition: 0.2s;
-
-  background: gray;
 `;

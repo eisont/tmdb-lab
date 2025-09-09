@@ -1,21 +1,24 @@
-import { useMovieList } from '@/api/movieHooks';
 import * as S from './Navbar.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchModeSlice, searchQuerySlice } from '@/app/store';
-import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
-import { MenuSVG, MoonSVG, PlaySVG, SearchSVG, CloseSVG } from '@/shared/assets/SVGicons';
+import { useNavigate } from 'react-router-dom';
+import { MenuSVG, MoonSVG, SearchSVG, PlaySVG, CloseSVG } from '@/shared/assets/SVGicons';
 import { useState } from 'react';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
-  const text = useSelector((state) => state.searchQuery);
-  const data = useMovieList({ query: `https://api.themoviedb.org/3/search/movie?language=ko-KO&include_adult=false&query=${text}` });
+  const navigation = useNavigate();
   const toggle = useSelector((state) => state.searchMode);
 
   const ToggleAndClear = () => {
     dispatch(searchModeSlice.actions.close());
     dispatch(searchQuerySlice.actions.clearQuery());
+    navigation('./');
+  };
+
+  const handleChange = (e) => {
+    navigation(`/details/search?q=${e.target.value}`);
   };
 
   return (
@@ -44,18 +47,10 @@ const NavBar = () => {
         <>
           <S.MainBox>
             <S.InputBox>
-              <S.Icon style={{ marginRight: '10px' }}>{SearchSVG({ size: '32', stroke: '#999' })}</S.Icon>
-              <S.Input placeholder='제목를 입력하세요.' onChange={(e) => dispatch(searchQuerySlice.actions.setQuery(e.target.value))} />
+              <S.Icon style={{ marginRight: '10px' }}>{SearchSVG({ stroke: '#999' })}</S.Icon>
+              <S.Input placeholder='제목를 입력하세요.' onChange={(e) => handleChange(e)} />
             </S.InputBox>
           </S.MainBox>
-
-          {text && (
-            <S.SearchBox>
-              {data?.map((el) => (
-                <SearchMovieCard key={el.id} data={el} width='200px' height='300px' fontSize='20px' />
-              ))}
-            </S.SearchBox>
-          )}
         </>
       )}
       {isMenuOpen && (

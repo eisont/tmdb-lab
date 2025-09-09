@@ -32,6 +32,33 @@ export const useMovieList = ({ query, enabled = true }) => {
   return result;
 };
 
+export const useMovieSearchList = ({ query, enabled = true, text = '' }) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (!enabled) return;
+
+    const debounceTimer = setTimeout(() => {
+      try {
+        const fetchData = async () => {
+          const res = await fetch(query, options);
+          const json = await res.json();
+          setData(json);
+        };
+        fetchData();
+      } catch (err) {
+        console.error(err);
+      }
+    }, 1000);
+    return () => clearTimeout(debounceTimer);
+  }, [query, enabled, text]);
+
+  const filter = data.results?.filter((el) => !el.adult);
+
+  const result = filter?.map((el) => ({ poster_path: el.poster_path, id: el.id, title: el.title, vote_average: el.vote_average }));
+
+  return result;
+};
+
 export const useTop20Movies = ({ query, enabled = true }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
