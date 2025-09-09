@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMovieList } from '@/api/movieHooks';
-import SearchMovieCard from '../Card/SearchMovieCard';
+import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
 import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 
 const Wrapper = styled.div`
