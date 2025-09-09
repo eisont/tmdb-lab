@@ -1,6 +1,7 @@
 import MoviePosterCard from '@/shared/ui/Card/MoviePosterCard';
 import styled from 'styled-components';
 import { useTop20Movies } from '@/api/movieHooks';
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -20,6 +21,10 @@ const Title = styled.div`
   padding: 20px 0;
   font-size: 40px;
   font-weight: 600;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    font-size: 32px;
+  }
 `;
 const MoviesList = styled.div`
   display: flex;

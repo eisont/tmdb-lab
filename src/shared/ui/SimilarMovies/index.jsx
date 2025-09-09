@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMovieList } from '@/api/movieHooks';
-import MovieCard from '@/shared/ui/Card/MovieCard';
+import SearchMovieCard from '../Card/SearchMovieCard';
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,11 +42,13 @@ const SimilarMovies = () => {
       <MainBox>
         <Head>비슷한 영화</Head>
 
-        <Box>
-          {ListData?.map((el) => (
-            <MovieCard key={el.id} data={el} />
-          ))}
-        </Box>
+        {ListData?.length !== 0 && (
+          <Box>
+            {ListData?.map((el) => (
+              <SearchMovieCard key={el.id} data={el} width='350px' height='500px' fontSize='30px' />
+            ))}
+          </Box>
+        )}
       </MainBox>
     </Wrapper>
   );

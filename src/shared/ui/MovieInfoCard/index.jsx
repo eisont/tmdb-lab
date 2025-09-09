@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useMovieDetail } from '@/api/movieHooks';
 import { FavoritesSVG } from '@/shared/assets/SVGicons';
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,7 +12,13 @@ const Wrapper = styled.div`
   align-items: flex-end;
   background-image: url(${(pr) => pr.$bg});
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    height: 80vh;
+    bottom: 0;
+  }
 `;
 const MainBox = styled.div`
   width: 1120px;
@@ -23,6 +30,10 @@ const MainBox = styled.div`
 const Poster = styled.img`
   height: 700px;
   border-radius: 5px;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    display: none;
+  }
 `;
 
 const LBox = styled.div`
@@ -36,6 +47,12 @@ const LBox = styled.div`
   background: rgb(0, 0, 0, 0.5);
 
   color: #fff;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    margin: 0;
+    padding: 0 30px;
+    height: 50%;
+  }
 `;
 const TitleBox = styled.div`
   margin: 0 0 10px 0;
@@ -45,11 +62,19 @@ const TitleBox = styled.div`
 const Title = styled.div`
   font-size: 60px;
   font-weight: 600;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    font-size: 40px;
+  }
 `;
 const Text = styled.div`
   padding: 8px 0;
   font-weight: 400;
   font-size: 18px;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    font-size: 16px;
+  }
 `;
 const Like = styled.div`
   margin: 0 0 0 20px;
@@ -66,7 +91,7 @@ const MovieInfoCard = () => {
         <LBox>
           <TitleBox>
             <Title>{DetailData.title}</Title>
-            <Like>{FavoritesSVG({ size: '32', fill: 'red', stroke: 'red' })}</Like>
+            {/* <Like>{FavoritesSVG({ size: '32', fill: 'red', stroke: 'red' })}</Like> */}
             <Like>{FavoritesSVG({ size: '32', fill: 'none', stroke: '#fff' })}</Like>
           </TitleBox>
           <Text>별점: {DetailData.vote_average}</Text>
