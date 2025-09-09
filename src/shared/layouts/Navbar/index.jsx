@@ -1,10 +1,10 @@
 import { useMovieSearchList } from '@/api/movieHooks';
 import * as S from './Navbar.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchModeSlice, searchQuerySlice } from '@/app/store';
-import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
-import { MenuSVG, MoonSVG, PlaySVG, SearchSVG, CloseSVG } from '@/shared/assets/SVGicons';
+import { MenuSVG, MoonSVG, SearchSVG, PlaySVG, CloseSVG } from '@/shared/assets/SVGicons';
 import { useState } from 'react';
+import { searchModeSlice, searchQuerySlice } from '@/shared/store';
+import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,15 +29,17 @@ const NavBar = () => {
           </S.Logo>
 
           <S.BtBox>
-            <S.Bt>로그인</S.Bt>
-            <S.Bt>회원가입</S.Bt>
-            <S.Icon>{MoonSVG({ size: '32', stroke: '#000' })}</S.Icon>
+            {/* <S.Bt>로그인</S.Bt>
+            <S.Bt>회원가입</S.Bt> */}
+            {/* <S.Icon>{MoonSVG({ size: '32', stroke: '#000' })}</S.Icon> */}
             {toggle ? (
               <S.Icon onClick={() => ToggleAndClear()}>{CloseSVG({ size: '32', stroke: '#000' })}</S.Icon>
             ) : (
               <S.Icon onClick={() => dispatch(searchModeSlice.actions.open())}>{SearchSVG({ size: '32', stroke: '#000' })}</S.Icon>
             )}
-            <S.Icon onClick={() => setIsMenuOpen(true)}>{MenuSVG({ size: '40', stroke: '#000' })}</S.Icon>
+            {/* <S.MenuIcon className='tablet' onClick={() => setIsMenuOpen(true)}>
+              {MenuSVG({ size: '40', stroke: '#000' })}
+            </S.MenuIcon> */}
           </S.BtBox>
         </S.FirstBox>
       </S.MainBox>

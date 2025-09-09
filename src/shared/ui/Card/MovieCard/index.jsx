@@ -10,24 +10,24 @@ const Wrapper = styled.div`
   position: relative;
 `;
 const Poster = styled.img`
-  width: 200px;
-  /* height: 300px; */
+  width: 350px;
+  height: 500px;
   display: block;
   border-radius: 5px;
 
   @media (max-width: ${BREAKPOINTS.tablet}) {
-    width: 133px;
-    height: 200px;
+    width: 200px;
+    height: 300px;
   }
 
   @media (max-width: ${BREAKPOINTS.mobile}) {
-    width: 250px;
-    height: 358px;
+    width: 133px;
+    height: 200px;
   }
 `;
 const FlexBox = styled.div`
-  width: 200px;
-  height: 300px;
+  width: 350px;
+  height: 500px;
   background: rgb(0, 0, 0, 0.2);
   border-radius: 5px;
   display: flex;
@@ -35,18 +35,17 @@ const FlexBox = styled.div`
   align-items: center;
 
   @media (max-width: ${BREAKPOINTS.tablet}) {
+    width: 200px;
+    height: 300px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
     width: 133px;
     height: 200px;
   }
-
-  @media (max-width: ${BREAKPOINTS.mobile}) {
-    width: 250px;
-    height: 358px;
-  }
 `;
 const FontBox = styled(Link)`
-  width: 200px;
-  height: 300px;
+  width: 350px;
+  height: 500px;
   position: absolute;
   top: 0;
 
@@ -67,29 +66,44 @@ const FontBox = styled(Link)`
   }
 
   @media (max-width: ${BREAKPOINTS.tablet}) {
+    width: 200px;
+    height: 300px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
     width: 133px;
     height: 200px;
   }
-
-  @media (max-width: ${BREAKPOINTS.mobile}) {
-    width: 250px;
-    height: 358px;
-  }
 `;
 const Font = styled.div`
-  padding: 20px 0;
+  padding: 30px 0;
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
   color: #fff;
   font-weight: 600;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    font-size: 20px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    font-size: 15px;
+  }
 `;
 
 const Rating = styled.div`
   font-size: 18px;
   color: #fff;
+
+  font-size: 26px;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    font-size: 16px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    font-size: 12px;
+  }
 `;
 
-const SearchMovieCard = (pr) => {
+const MovieCard = (pr) => {
   const dispatch = useDispatch();
   const ToggleAndClear = () => {
     dispatch(searchModeSlice.actions.close());
@@ -97,14 +111,14 @@ const SearchMovieCard = (pr) => {
   };
   return (
     <Wrapper>
-      {pr.data.poster_path ? <Poster src={`https://image.tmdb.org/t/p/w500${pr.data.poster_path}`} alt={pr.data.title} /> : <FlexBox>{PlaySVG({ fill: '#fff', size: '60' })}</FlexBox>}
-
+      {pr.data.poster_path ? <Poster src={`https://image.tmdb.org/t/p/w500${pr.data.poster_path}`} alt={pr.data.title} /> : <FlexBox>{PlaySVG({ fill: '#fff' })}</FlexBox>}
       <FontBox to={`/details/${pr.data.id}`} onClick={() => ToggleAndClear()}>
         <Font>{pr.data.title}</Font>
+
         <Rating>평점: {pr.data.vote_average}</Rating>
       </FontBox>
     </Wrapper>
   );
 };
 
-export default SearchMovieCard;
+export default MovieCard;

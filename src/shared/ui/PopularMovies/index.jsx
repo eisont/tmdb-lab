@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useMovieList } from '@/api/movieHooks';
-import SearchMovieCard from '../Card/SearchMovieCard';
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
+import MovieCard from '@/shared/ui/Card/MovieCard';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,6 +19,15 @@ const Title = styled.div`
   padding: 20px 0;
   font-size: 40px;
   font-weight: 600;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    padding: 15px 0;
+    font-size: 30px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 10px 0;
+    font-size: 25px;
+  }
 `;
 const MoviesList = styled.div`
   display: flex;
@@ -25,6 +35,14 @@ const MoviesList = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    gap: 10px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    gap: 5px;
+  }
 `;
 
 const PopularMovies = () => {
@@ -34,10 +52,9 @@ const PopularMovies = () => {
     <Wrapper>
       <MainBox>
         <Title>인기순</Title>
-
         <MoviesList>
           {popularMovie?.map((el) => (
-            <SearchMovieCard key={el.id} data={el} width='350px' height='500px' fontSize='30px' />
+            <MovieCard key={el.id} data={el} />
           ))}
         </MoviesList>
       </MainBox>

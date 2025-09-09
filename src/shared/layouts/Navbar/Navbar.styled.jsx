@@ -62,7 +62,7 @@ export const Bt = styled.div`
     color: #fff;
   }
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
     display: none;
   }
 `;
@@ -75,6 +75,12 @@ export const Icon = styled.div`
     cursor: pointer;
   }
 `;
+export const MenuIcon = styled(Icon)`
+  display: none;
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    display: inline-block;
+  }
+`;
 
 export const InputBox = styled.div`
   width: 80%;
@@ -84,14 +90,24 @@ export const InputBox = styled.div`
   align-items: center;
 
   background: #fff;
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    height: 30px;
+  }
 `;
 export const Input = styled.input`
-  width: 1000px;
+  width: 80%;
   height: 40px;
 
+  background: none;
   font-size: 20px;
   border: none;
   outline: none;
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    height: 30px;
+    font-size: 16px;
+  }
 `;
 
 export const SearchBox = styled.div`
@@ -108,10 +124,11 @@ export const SearchBox = styled.div`
     flex: auto;
   }
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
     display: flex;
   }
 `;
+
 export const Box = styled.div`
   position: absolute;
   top: 0;

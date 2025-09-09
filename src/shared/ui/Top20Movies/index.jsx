@@ -4,6 +4,7 @@ import { useTop20Movies } from '@/api/movieHooks';
 import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 
 const Wrapper = styled.div`
+  margin: 20px 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,8 +23,14 @@ const Title = styled.div`
   font-size: 40px;
   font-weight: 600;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
-    font-size: 32px;
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    padding: 15px 0;
+    font-size: 30px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 10px 0;
+    font-size: 25px;
   }
 `;
 const MoviesList = styled.div`

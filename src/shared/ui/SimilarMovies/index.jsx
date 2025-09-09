@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMovieList } from '@/api/movieHooks';
 import SearchMovieCard from '../Card/SearchMovieCard';
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
 `;
 const MainBox = styled.div`
   margin: 40px 0 0 0;
-  width: 1200px;
+  width: 80%;
   height: 100%;
 
   display: flex;
@@ -24,12 +25,16 @@ const Head = styled.div`
   font-weight: 600;
 `;
 const Box = styled.div`
-  height: 1180px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px;
 
   overflow: scroll;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    gap: 10px;
+  }
 `;
 
 const SimilarMovies = () => {

@@ -4,6 +4,7 @@ import Top20Movies from '@//shared/ui/Top20Movies';
 import PopularMovies from '@/shared/ui/PopularMovies';
 import MovieDetail from '@/pages/MovieDetail';
 import styled from 'styled-components';
+import MovieSearch from './MovieSearch';
 
 const Wrapper = styled.div`
   width: 100%;

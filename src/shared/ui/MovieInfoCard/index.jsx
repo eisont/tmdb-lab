@@ -15,30 +15,35 @@ const Wrapper = styled.div`
   background-position: center;
   background-size: cover;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
     height: 80vh;
     bottom: 0;
   }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    align-items: stretch;
+  }
 `;
 const MainBox = styled.div`
-  width: 1120px;
+  width: 70%;
   height: 700px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-const Poster = styled.img`
-  height: 700px;
-  border-radius: 5px;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
-    display: none;
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    height: 100%;
   }
 `;
 
 const LBox = styled.div`
+  padding: 20px;
   margin: 0 20px 0 0;
-  height: 100%;
+  height: 660px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -48,10 +53,12 @@ const LBox = styled.div`
 
   color: #fff;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    padding: 30px;
     margin: 0;
-    padding: 0 30px;
-    height: 50%;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    justify-content: flex-end;
   }
 `;
 const TitleBox = styled.div`
@@ -63,7 +70,10 @@ const Title = styled.div`
   font-size: 60px;
   font-weight: 600;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    font-size: 50px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
     font-size: 40px;
   }
 `;
@@ -72,13 +82,29 @@ const Text = styled.div`
   font-weight: 400;
   font-size: 18px;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
-    font-size: 16px;
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    font-size: 18px;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    font-size: 14px;
   }
 `;
 const Like = styled.div`
   margin: 0 0 0 20px;
   font-size: 30px;
+`;
+
+const Poster = styled.img`
+  width: 466px;
+  height: 700px;
+  border-radius: 5px;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    display: none;
+  }
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    display: none;
+  }
 `;
 
 const MovieInfoCard = () => {
@@ -92,7 +118,7 @@ const MovieInfoCard = () => {
           <TitleBox>
             <Title>{DetailData.title}</Title>
             {/* <Like>{FavoritesSVG({ size: '32', fill: 'red', stroke: 'red' })}</Like> */}
-            <Like>{FavoritesSVG({ size: '32', fill: 'none', stroke: '#fff' })}</Like>
+            {/* <Like>{FavoritesSVG({ size: '32', fill: 'none', stroke: '#fff' })}</Like> */}
           </TitleBox>
           <Text>별점: {DetailData.vote_average}</Text>
           <Text style={{ display: 'flex' }}>
