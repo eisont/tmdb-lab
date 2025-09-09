@@ -6,8 +6,7 @@ import MovieDetail from '@/pages/MovieDetail';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -15,7 +14,6 @@ const Wrapper = styled.div`
 `;
 
 const MainBox = styled.div`
-  padding: 100px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,7 +33,7 @@ const Layout = () => {
             </MainBox>
           }
         />
-        <Route path='/details/:id' element={<MovieDetail />} />
+        <Route path='/details/:id?' element={<MovieDetail />} />
       </Routes>
     </Wrapper>
   );

@@ -1,4 +1,4 @@
-import { useMovieList } from '@/api/movieHooks';
+import { useMovieSearchList } from '@/api/movieHooks';
 import * as S from './Navbar.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchModeSlice, searchQuerySlice } from '@/app/store';
@@ -10,7 +10,9 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const text = useSelector((state) => state.searchQuery);
-  const data = useMovieList({ query: `https://api.themoviedb.org/3/search/movie?language=ko-KO&include_adult=false&query=${text}` });
+
+  const data = useMovieSearchList({ query: `https://api.themoviedb.org/3/search/movie?language=ko-KO&include_adult=false&query=${text}`, text: text });
+
   const toggle = useSelector((state) => state.searchMode);
 
   const ToggleAndClear = () => {
