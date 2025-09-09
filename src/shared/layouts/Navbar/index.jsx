@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchModeSlice, searchQuerySlice } from '@/app/store';
 import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
 import { MenuSVG, MoonSVG, PlaySVG, SearchSVG, CloseSVG } from '@/shared/assets/SVGicons';
+import { useState } from 'react';
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const text = useSelector((state) => state.searchQuery);
   const data = useMovieList({ query: `https://api.themoviedb.org/3/search/movie?language=ko-KO&include_adult=false&query=${text}` });
@@ -33,10 +35,8 @@ const NavBar = () => {
             ) : (
               <S.Icon onClick={() => dispatch(searchModeSlice.actions.open())}>{SearchSVG({ size: '32', stroke: '#000' })}</S.Icon>
             )}
+            <S.Icon onClick={() => setIsMenuOpen(true)}>{MenuSVG({ size: '40', stroke: '#000' })}</S.Icon>
           </S.BtBox>
-          <S.Menu>
-            <S.Icon>{MenuSVG({ size: '32', stroke: '#000' })}</S.Icon>
-          </S.Menu>
         </S.FirstBox>
       </S.MainBox>
 
@@ -52,11 +52,18 @@ const NavBar = () => {
           {text && (
             <S.SearchBox>
               {data?.map((el) => (
-                <SearchMovieCard key={el.id} data={el} />
+                <SearchMovieCard key={el.id} data={el} width='200px' height='300px' fontSize='20px' />
               ))}
             </S.SearchBox>
           )}
         </>
+      )}
+      {isMenuOpen && (
+        <S.Box>
+          <S.Icon onClick={() => setIsMenuOpen(false)} style={{ padding: '20px' }}>
+            {CloseSVG({ size: '24', stroke: '#fff' })}
+          </S.Icon>
+        </S.Box>
       )}
     </S.Wrapper>
   );

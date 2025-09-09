@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MovieCard from '@/shared/ui/Card/MovieCard';
 import { useMovieList } from '@/api/movieHooks';
+import SearchMovieCard from '../Card/SearchMovieCard';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -24,6 +24,7 @@ const MoviesList = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 20px;
 `;
 
 const PopularMovies = () => {
@@ -36,7 +37,7 @@ const PopularMovies = () => {
 
         <MoviesList>
           {popularMovie?.map((el) => (
-            <MovieCard key={el.id} data={el} />
+            <SearchMovieCard key={el.id} data={el} width='350px' height='500px' fontSize='30px' />
           ))}
         </MoviesList>
       </MainBox>
