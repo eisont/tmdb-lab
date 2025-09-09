@@ -1,8 +1,9 @@
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
 
   position: absolute;
   display: flex;
@@ -10,9 +11,10 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   background: rgb(255, 255, 255, 0.9);
+  z-index: 1;
 `;
 export const MainBox = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +23,7 @@ export const MainBox = styled.div`
   border-bottom: 1px solid gray;
 `;
 export const FirstBox = styled.div`
-  width: 1200px;
+  width: 80%;
   height: 70px;
 
   display: flex;
@@ -60,6 +62,10 @@ export const Bt = styled.div`
     background: #000;
     color: #fff;
   }
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    display: none;
+  }
 `;
 export const Icon = styled.div`
   display: flex;
@@ -72,7 +78,7 @@ export const Icon = styled.div`
 `;
 
 export const InputBox = styled.div`
-  width: 1200px;
+  width: 80%;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -91,7 +97,7 @@ export const Input = styled.input`
 
 export const SearchBox = styled.div`
   padding: 20px 0;
-  width: 1200px;
+  width: 80%;
 
   display: flex;
   flex-wrap: wrap;
@@ -102,4 +108,21 @@ export const SearchBox = styled.div`
     content: '';
     flex: auto;
   }
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    display: flex;
+  }
+`;
+export const Box = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  transition: 0.2s;
+
+  background: gray;
 `;

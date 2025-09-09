@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { searchModeSlice, searchQuerySlice } from '@/app/store';
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 const Wrapper = styled.div`
   display: flex;
   margin: 0 30px 0 0;
@@ -14,6 +15,10 @@ const Num = styled.div`
   padding: 0 30px 0 0;
   font-size: 50px;
   font-weight: 600;
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    font-size: 40px;
+  }
 `;
 const Poster = styled.img`
   height: 500px;
@@ -23,6 +28,10 @@ const Poster = styled.img`
 
   :hover {
     cursor: pointer;
+  }
+
+  @media (max-width: ${BREAKPOINTS.laptop}) {
+    height: 300px;
   }
 `;
 
