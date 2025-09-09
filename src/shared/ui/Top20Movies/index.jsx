@@ -22,8 +22,14 @@ const Title = styled.div`
   font-size: 40px;
   font-weight: 600;
 
-  @media (max-width: ${BREAKPOINTS.laptop}) {
-    font-size: 32px;
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    padding: 15px 0;
+    font-size: 30px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 10px 0;
+    font-size: 25px;
   }
 `;
 const MoviesList = styled.div`

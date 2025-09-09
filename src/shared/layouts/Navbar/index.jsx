@@ -30,15 +30,17 @@ const NavBar = () => {
           </S.Logo>
 
           <S.BtBox>
-            <S.Bt>로그인</S.Bt>
-            <S.Bt>회원가입</S.Bt>
-            <S.Icon>{MoonSVG({ size: '32', stroke: '#000' })}</S.Icon>
+            {/* <S.Bt>로그인</S.Bt>
+            <S.Bt>회원가입</S.Bt> */}
+            {/* <S.Icon>{MoonSVG({ size: '32', stroke: '#000' })}</S.Icon> */}
             {toggle ? (
               <S.Icon onClick={() => ToggleAndClear()}>{CloseSVG({ size: '32', stroke: '#000' })}</S.Icon>
             ) : (
               <S.Icon onClick={() => dispatch(searchModeSlice.actions.open())}>{SearchSVG({ size: '32', stroke: '#000' })}</S.Icon>
             )}
-            <S.Icon onClick={() => setIsMenuOpen(true)}>{MenuSVG({ size: '40', stroke: '#000' })}</S.Icon>
+            {/* <S.MenuIcon className='tablet' onClick={() => setIsMenuOpen(true)}>
+              {MenuSVG({ size: '40', stroke: '#000' })}
+            </S.MenuIcon> */}
           </S.BtBox>
         </S.FirstBox>
       </S.MainBox>

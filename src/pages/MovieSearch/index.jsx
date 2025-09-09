@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { useSearchParams } from 'react-router-dom';
 import { useMovieSearchList } from '@/api/movieHooks';
 import SearchMovieCard from '@/shared/ui/Card/SearchMovieCard';
+import { BREAKPOINTS } from '@/shared/styles/breakpoints';
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +14,7 @@ const Wrapper = styled.div`
 
 const SearchBox = styled.div`
   padding: 30px 0;
-  width: 1200px;
+  width: 80%;
 
   display: flex;
   flex-wrap: wrap;
@@ -22,6 +24,11 @@ const SearchBox = styled.div`
   &::after {
     content: '';
     flex: auto;
+  }
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    padding: 20px 0;
+    gap: 20px;
   }
 `;
 
