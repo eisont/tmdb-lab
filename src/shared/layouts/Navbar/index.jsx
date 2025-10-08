@@ -30,7 +30,6 @@ const NavBar = () => {
 
           <S.BtBox>
             <S.Bt to='/login'>로그인</S.Bt>
-            <S.Bt to='/signup'>회원가입</S.Bt>
             {/* <S.Icon>{MoonSVG({ size: '32', stroke: '#000' })}</S.Icon> */}
             {toggle ? (
               <S.Icon onClick={() => ToggleAndClear()}>{CloseSVG({ size: '32', stroke: '#000' })}</S.Icon>
