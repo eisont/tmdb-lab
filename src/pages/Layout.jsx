@@ -4,7 +4,8 @@ import Top20Movies from '@//shared/ui/Top20Movies';
 import PopularMovies from '@/shared/ui/PopularMovies';
 import MovieDetail from '@/pages/MovieDetail';
 import styled from 'styled-components';
-import MovieSearch from './MovieSearch';
+import Signup from './signup';
+import Login from './login';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -35,6 +36,8 @@ const Layout = () => {
           }
         />
         <Route path='/details/:id?' element={<MovieDetail />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
       </Routes>
     </Wrapper>
   );
