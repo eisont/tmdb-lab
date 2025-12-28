@@ -47,7 +47,7 @@ export const BtBox = styled.div`
   display: flex;
   align-items: center;
 `;
-export const Bt = styled.div`
+export const Bt = styled(Link)`
   margin: 0 10px;
   padding: 10px 20px;
   border: 1px solid gray;
@@ -55,6 +55,7 @@ export const Bt = styled.div`
   font-size: 18px;
   border-radius: 5px;
   transition: 0.3s;
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;
